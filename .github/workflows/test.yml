@@ -1,0 +1,20 @@
+name: test
+
+on:
+  workflow_dispatch:
+    inputs:
+      arg1:
+        description: argument 1
+        required: true
+        default: value1
+
+jobs:
+  test:
+    name: the test
+    runs-on: [ubuntu-latest]
+    steps:
+    - uses: actions/checkout@v2
+    - name: echo the argument
+      run: echo ${{ github.event.inputs.arg1 }}
+    - name: cat the file
+      run: cat file
